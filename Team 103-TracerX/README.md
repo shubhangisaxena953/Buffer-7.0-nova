@@ -64,11 +64,12 @@ TracerX is an interactive network security visualization tool that maps and anal
 
 Built as part of **Buffer 7.0** Hackathon.
 
-| Name | Role |
-|------|------|
-|      |      |
-|      |      |
-|      |      |
+|         Name         | Role |
+|----------------------|------|
+|  Shubhangi Saxena    |      |
+|    Aarya Karekar     |      |
+|   Shrayati Sharma    |      |
+|   Hemakshi Parsai    |      |
 
 ---
 
