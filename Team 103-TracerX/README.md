@@ -5,6 +5,14 @@ TracerX is an interactive network security visualization tool that maps and anal
 
 ---
 
+## 🎥 Video
+
+> A short walkthrough of TracerX showing live attack path analysis, node inspection, and vulnerability mapping.
+
+** link **
+
+---
+
 ## Features
 
 - **Interactive Network Graph** — Visualizes all nodes in your network topology with real-time animated attack path overlays
@@ -64,10 +72,10 @@ TracerX is an interactive network security visualization tool that maps and anal
 
 |         Name         |
 |----------------------|
-|  Shubhangi Saxena    | 
-|    Aarya Karekar     | 
-|   Shrayati Sharma    |  
-|   Hemakshi Parsai    | 
+|  Shubhangi Saxena    |
+|    Aarya Karekar     |
+|   Shrayati Sharma    |
+|   Hemakshi Parsai    |
 
 ---
 
