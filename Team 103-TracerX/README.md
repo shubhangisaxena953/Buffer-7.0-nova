@@ -1,17 +1,18 @@
 # TracerX 🛡️
+
 ### Network Attack Path Analyzer
 
 TracerX is an interactive network security visualization tool that maps and analyzes potential attack paths across your infrastructure. It uses the **CVSS** scoring system and aligns with the **MITRE ATT&CK Framework** to help security teams identify and prioritize vulnerabilities before attackers can exploit them.
 
----
+-----
 
 ## 🎥 Video
 
 > A short walkthrough of TracerX showing live attack path analysis, node inspection, and vulnerability mapping.
 
-**https://drive.google.com/file/d/1Bbc9HYiSnA1LgB6Ah58Ktt9v2MvUZVBA/view?usp=sharing**
+**[▶ Watch Demo on Google Drive](https://drive.google.com/file/d/1Bbc9HYiSnA1LgB6Ah58Ktt9v2MvUZVBA/view?usp=sharing)**
 
----
+-----
 
 ## Features
 
@@ -23,7 +24,7 @@ TracerX is an interactive network security visualization tool that maps and anal
 - **MITRE ATT&CK Alignment** — Vulnerability mapping follows the MITRE ATT&CK framework
 - **Scan Simulation** — Trigger a new scan to refresh threat detection
 
----
+-----
 
 ## Tech Stack
 
@@ -32,28 +33,44 @@ TracerX is an interactive network security visualization tool that maps and anal
 - **Fonts:** JetBrains Mono, Sora (Google Fonts)
 - **Styling:** CSS Variables for dynamic theming
 
----
+-----
 
 ## How It Works
 
 1. The tool models your network as a graph of **nodes** (servers, firewalls, databases, etc.) and **edges** (connections between them)
-2. It computes all possible **attack paths** from the internet to critical assets
-3. Each path is scored using **CVSS 3.1** and mapped to real-world CVEs
-4. The **Canvas renderer** animates the active attack path with moving threat indicators
-5. Users can click nodes to inspect vulnerabilities and select different attack paths from the sidebar
+1. It computes all possible **attack paths** from the internet to critical assets
+1. Each path is scored using **CVSS 3.1** and mapped to real-world CVEs
+1. The **Canvas renderer** animates the active attack path with moving threat indicators
+1. Users can click nodes to inspect vulnerabilities and select different attack paths from the sidebar
 
----
+-----
+
+## Data Structures Used
+
+|Data Structure                               |Where Used                            |Why                                                                                                |
+|---------------------------------------------|--------------------------------------|---------------------------------------------------------------------------------------------------|
+|**Array**                                    |`NODES[]`, `EDGES[]`, `ATTACK_PATHS[]`|Stores the full list of network nodes, connections, and ranked attack paths                        |
+|**Graph** (Adjacency List via Array of Edges)|Network topology model                |Represents the network as a directed graph — nodes are machines, edges are connections between them|
+|**Object / Hash Map**                        |`POS{}`, `NODE_COLORS{}`              |O(1) lookup of node positions and color themes by node ID                                          |
+|**Set**                                      |`pathNodes` (during rendering)        |Quickly checks if a node belongs to the currently selected attack path                             |
+|**Stack (call stack)**                       |Canvas `render()` loop                |Recursive `requestAnimationFrame` drives the animation frame-by-frame                              |
+|**Array of Objects**                         |CVE lists per node (`node.cves[]`)    |Each node stores its vulnerabilities as a list of structured CVE records                           |
+
+
+> The core of TracerX is a **directed graph** — attack paths are essentially traversals of this graph from the `internet` node to critical target nodes like the database, ranked by cumulative CVSS score.
+
+-----
 
 ## Sample Attack Paths Detected
 
-| Path ID | CVSS | Route | Exploit Chain |
-|---------|------|-------|---------------|
-| AP-001 | 9.8 | Internet → Firewall → LB → Web1 → App → LDAP → DB | Log4Shell → AD PrivEsc → DB Admin |
-| AP-002 | 9.1 | Internet → Firewall → LB → Web1 → App → DB | Path Traversal → Spring4Shell → DB |
-| AP-003 | 8.8 | Internet → Firewall → LB → Web2 → App → API → DB | Sudo Exploit → RCE → DB Breach |
-| AP-005 | 8.1 | Internet → Firewall → CI/CD → App → LDAP → DB | Jenkins RCE → AD Spoof → DB |
+|Path ID|CVSS|Route                                            |Exploit Chain                     |
+|-------|----|-------------------------------------------------|----------------------------------|
+|AP-001 |9.8 |Internet → Firewall → LB → Web1 → App → LDAP → DB|Log4Shell → AD PrivEsc → DB Admin |
+|AP-002 |9.1 |Internet → Firewall → LB → Web1 → App → DB       |Path Traversal → Spring4Shell → DB|
+|AP-003 |8.8 |Internet → Firewall → LB → Web2 → App → API → DB |Sudo Exploit → RCE → DB Breach    |
+|AP-005 |8.1 |Internet → Firewall → CI/CD → App → LDAP → DB    |Jenkins RCE → AD Spoof → DB       |
 
----
+-----
 
 ## CVEs Covered
 
@@ -66,18 +83,18 @@ TracerX is an interactive network security visualization tool that maps and anal
 - `CVE-2021-3156`  — Sudo Heap Overflow (CVSS 7.8)
 - `CVE-2021-21985` — Jenkins RCE via Script Console
 
----
+-----
 
 ## Team Nova
 
-|         Name         |
-|----------------------|
-|  Shubhangi Saxena    |
-|    Aarya Karekar     |
-|   Shrayati Sharma    |
-|   Hemakshi Parsai    |
+|Name            |
+|----------------|
+|Shubhangi Saxena|
+|Aarya Karekar   |
+|Shrayati Sharma |
+|Hemakshi Parsai |
 
----
+-----
 
 ## License
 
