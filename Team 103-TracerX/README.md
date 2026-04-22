@@ -1,7 +1,7 @@
 # TracerX 🛡️
 ### Network Attack Path Analyzer
 
-TracerX is an interactive network security visualization tool that maps and analyzes potential attack paths across your infrastructure. It uses the **CVSS 3.1** scoring system and aligns with the **MITRE ATT&CK Framework** to help security teams identify and prioritize vulnerabilities before attackers can exploit them.
+TracerX is an interactive network security visualization tool that maps and analyzes potential attack paths across your infrastructure. It uses the **CVSS** scoring system and aligns with the **MITRE ATT&CK Framework** to help security teams identify and prioritize vulnerabilities before attackers can exploit them.
 
 ---
 
